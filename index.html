@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="GAME STORE — магазин компьютерных игр">
+<title>GAME STORE — компьютерные игры</title>
+<style>
+:root{--bg:#090909;--panel:#141414;--panel2:#1b1b1b;--red:#f02b35;--red2:#b91620;--text:#f5f5f5;--muted:#a5a5a5;--line:#292929}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#351014 0,transparent 35%),var(--bg);color:var(--text);font:16px/1.5 Inter,Arial,sans-serif}
+a{color:inherit;text-decoration:none}.wrap{max-width:1180px;margin:auto;padding:0 22px}
+header{position:sticky;top:0;z-index:5;background:#0b0b0bea;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:23px;font-weight:950;letter-spacing:1.2px}.logo span{color:var(--red)}
+.navlinks{display:flex;gap:24px;color:#ccc;font-size:14px}.cartbtn,.btn{border:0;background:var(--red);color:white;padding:12px 18px;border-radius:9px;font-weight:800;cursor:pointer}.cartbtn:hover,.btn:hover{background:#ff4650}
+.hero{padding:70px 0 52px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+.kicker{color:#ff626a;font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:12px}
+h1{font-size:clamp(38px,6vw,66px);line-height:1.02;margin:13px 0 18px;letter-spacing:-2px}
+.hero p{color:#bbb;max-width:560px;font-size:17px}.heroart{min-height:260px;border-radius:22px;border:1px solid #4a1b20;background:linear-gradient(135deg,#3b0b10,#151515 60%),repeating-linear-gradient(135deg,transparent 0 18px,#ffffff08 19px 20px);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.heroart:before{content:"";position:absolute;width:250px;height:250px;border:1px solid #ff424255;transform:rotate(45deg);box-shadow:0 0 80px #ed263333}
+.heroart strong{font-size:clamp(32px,5vw,54px);letter-spacing:4px;text-shadow:0 8px 30px #000;z-index:1}.heroart strong span{color:var(--red)}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;margin:24px 0}.sectionhead h2{font-size:28px;margin:0}.sectionhead p{margin:0;color:var(--muted);font-size:13px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.search{background:var(--panel);border:1px solid var(--line);color:white;border-radius:9px;padding:11px 14px;min-width:230px;outline:none}.search:focus{border-color:var(--red)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:70px}
+.game{background:var(--panel);border:1px solid var(--line);border-radius:15px;overflow:hidden;transition:.2s}.game:hover{transform:translateY(-4px);border-color:#7e252b}
+.cover{height:165px;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:950;letter-spacing:3px;background:linear-gradient(135deg,#391016,#191919 65%);color:#ff555e;text-shadow:0 5px 24px #000}
+.cover.alt{background:linear-gradient(135deg,#282828,#4a1116)}.cover.alt2{background:linear-gradient(135deg,#171717,#5b2024)}
+.gamebody{padding:17px}.gamebody h3{margin:0 0 5px;font-size:19px}.tag{color:#999;font-size:12px}.desc{color:#bbb;font-size:13px;min-height:40px;margin:12px 0}
+.gamefoot{display:flex;align-items:center;justify-content:space-between;gap:10px}.price{font-weight:900;font-size:20px}.add{background:#2b2b2b;color:white;border:1px solid #444;border-radius:8px;padding:10px 13px;cursor:pointer;font-weight:700}.add:hover{background:var(--red);border-color:var(--red)}
+.notice{background:#171111;border:1px solid #542026;color:#e6c6c8;border-radius:12px;padding:16px 18px;margin:0 0 65px;font-size:13px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:#888;font-size:13px}.footrow{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.overlay{position:fixed;inset:0;background:#000b;display:none;z-index:10;align-items:center;justify-content:center;padding:18px}.overlay.show{display:flex}.modal{background:#151515;border:1px solid #444;border-radius:16px;padding:24px;width:min(480px,100%);box-shadow:0 20px 80px #000}.modalhead{display:flex;justify-content:space-between;align-items:center}.modal h2{margin:0}.close{background:none;color:white;border:0;font-size:25px;cursor:pointer}.cartline{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.total{display:flex;justify-content:space-between;font-size:20px;font-weight:900;margin:18px 0}.muted{color:var(--muted);font-size:13px}.full{width:100%}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:48px}.heroart{min-height:180px}.grid{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}}
+@media(max-width:540px){.grid{grid-template-columns:1fr}.sectionhead{display:block}.sectionhead p{margin-top:5px}.logo{font-size:19px}.nav{height:66px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="logo" href="#"><span>GAME</span> STORE</a>
+  <nav class="navlinks"><a href="#catalog">Каталог</a><a href="#about">О магазине</a><a href="#contacts">Контакты</a></nav>
+  <button class="cartbtn" onclick="openCart()">Корзина <span id="cartCount">0</span></button>
+</div></header>
+<main class="wrap">
+  <section class="hero">
+    <div><div class="kicker">Цифровой игровой магазин</div><h1>ТВОЯ СЛЕДУЮЩАЯ<br><span style="color:var(--red)">ИГРА</span> НАЧИНАЕТСЯ ЗДЕСЬ</h1>
+      <p>Выбирай компьютерные игры, изучай описание и добавляй понравившееся в корзину. Удобный каталог в тёмном стиле.</p>
+      <a class="btn" href="#catalog" style="display:inline-block;margin-top:12px">Смотреть каталог</a>
+    </div>
+    <div class="heroart"><strong><span>GAME</span><br>STORE</strong></div>
+  </section>
+  <section id="catalog">
+    <div class="sectionhead"><h2>Каталог игр</h2><p>Демонстрационные карточки — замени на игры, которые разрешено продавать</p></div>
+    <div class="filters"><input class="search" id="search" placeholder="Поиск по каталогу..." oninput="filterGames()"></div>
+    <div class="grid" id="games">
+      <article class="game" data-name="Проект Альфа">
+        <div class="cover">ALPHA</div><div class="gamebody"><h3>Проект Альфа</h3><div class="tag">Экшен · ПК</div><p class="desc">Демонстрационная карточка игры. Добавь сюда своё описание и системные требования.</p><div class="gamefoot"><span class="price">599 ₽</span><button class="add" onclick="addToCart('Проект Альфа',599)">В корзину</button></div></div>
+      </article>
+      <article class="game" data-name="Красная зона">
+        <div class="cover alt">RED ZONE</div><div class="gamebody"><h3>Красная зона</h3><div class="tag">Приключение · ПК</div><p class="desc">Демонстрационная карточка игры. Укажи точную версию, язык и платформу.</p><div class="gamefoot"><span class="price">799 ₽</span><button class="add" onclick="addToCart('Красная зона',799)">В корзину</button></div></div>
+      </article>
+      <article class="game" data-name="Тёмный сектор">
+        <div class="cover alt2">DARK</div><div class="gamebody"><h3>Тёмный сектор</h3><div class="tag">Стратегия · ПК</div><p class="desc">Демонстрационная карточка игры. Добавь изображения и характеристики лицензированной игры.</p><div class="gamefoot"><span class="price">449 ₽</span><button class="add" onclick="addToCart('Тёмный сектор',449)">В корзину</button></div></div>
+      </article>
+    </div>
+  </section>
+  <section id="about" class="notice"><strong>Важно:</strong> это готовый демонстрационный макет. Оплата и автоматическая выдача файлов пока не подключены. Перед запуском размести только игры, на распространение которых у тебя есть разрешение, и добавь настоящие обложки, описания, условия продажи и контакты продавца.</section>
+</main>
+<footer id="contacts"><div class="wrap footrow"><span>© 2026 GAME STORE</span><span>Контакты магазина: добавь рабочий адрес поддержки</span><span>Цены указаны в рублях</span></div></footer>
+<div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()"><div class="modal">
+  <div class="modalhead"><h2>Корзина</h2><button class="close" onclick="closeCart()">×</button></div>
+  <div id="cartItems" class="muted" style="margin-top:12px">Корзина пока пуста.</div>
+  <div class="total"><span>Итого</span><span id="total">0 ₽</span></div>
+  <p class="muted">Демонстрационный режим: реальная оплата ещё не подключена. Не вводи здесь данные банковской карты.</p>
+  <button class="btn full" onclick="checkout()">Перейти к оплате</button>
+</div></div>
+<script>
+let cart=[];
+function addToCart(name,price){let item=cart.find(x=>x.name===name);if(item)item.qty++;else cart.push({name,price,qty:1});renderCart();document.getElementById('cartCount').textContent=cart.reduce((s,x)=>s+x.qty,0)}
+function renderCart(){let box=document.getElementById('cartItems');if(!cart.length){box.textContent='Корзина пока пуста.'}else{box.innerHTML=cart.map((x,i)=>`<div class="cartline"><span>${x.name} × ${x.qty}</span><span>${(x.price*x.qty).toLocaleString('ru-RU')} ₽ <button onclick="removeItem(${i})" style="background:none;border:0;color:#ff646b;cursor:pointer">×</button></span></div>`).join('')}document.getElementById('total').textContent=cart.reduce((s,x)=>s+x.price*x.qty,0).toLocaleString('ru-RU')+' ₽'}
+function removeItem(i){cart.splice(i,1);renderCart();document.getElementById('cartCount').textContent=cart.reduce((s,x)=>s+x.qty,0)}
+function openCart(){document.getElementById('cartOverlay').classList.add('show');renderCart()}
+function closeCart(){document.getElementById('cartOverlay').classList.remove('show')}
+function checkout(){alert('Это демонстрационный макет. Для настоящих заказов нужно подключить платёжный сервис и сервер, который выдаёт ссылку только после подтверждения оплаты.');}
+function filterGames(){let q=document.getElementById('search').value.toLowerCase();document.querySelectorAll('.game').forEach(g=>g.style.display=g.dataset.name.toLowerCase().includes(q)?'':'none')}
+</script>
+</body></html>
